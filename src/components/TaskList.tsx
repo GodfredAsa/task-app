@@ -4,13 +4,15 @@ import React, { useState } from "react";
 import { useTasks } from "../hooks/useTask";
 import { ITask } from "../types/ITask";
 import UpdateTask from "./UpdateTask";
-import PriorityFilter from './PriorityFilter';
 
-const TaskList: React.FC = () => {
+interface TaskListProps {
+  filterPriority: ITask["priority"] | "ALL";
+}
+
+const TaskList: React.FC<TaskListProps> = ({ filterPriority }) => {
   const { tasks, completeTask, deleteTask, updateTask } = useTasks();
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [selectedTask, setSelectedTask] = useState<ITask | null>(null);
-  const [filterPriority, setFilterPriority] = useState<ITask["priority"] | "ALL">("ALL");
 
   const handleEditClick = (task: ITask) => {
     setSelectedTask(task);
@@ -22,20 +24,17 @@ const TaskList: React.FC = () => {
     setSelectedTask(null);
   };
 
-  const handleFilterChange = (priority: ITask["priority"] | "ALL") => {
-    setFilterPriority(priority);
-  };
-
   const filteredTasks = tasks.filter((task) => {
-    return filterPriority === "ALL" ? true : task.priority === filterPriority
-  
+    if (filterPriority === "ALL") {
+      return true;
+    }
+    return task.priority === filterPriority;
   });
 
   return (
-    <div className=" bg-gray-100 p-8 w-[80%] m-auto rounded-md pb-16">
+    <div className=" bg-[#f4f4f4] p-8 w-[80%] m-auto rounded-md pb-16">
       <h1 className="text-2xl font-bold text-gray-800 text-center my-4">Tasks ({tasks.length})</h1>
-      <PriorityFilter onFilterChange={handleFilterChange} currentFilter={filterPriority} />
-      <div className="bg-white shadow rounded-lg overflow-hidden w-[80%] m-auto">
+      <div className="bg-white shadow rounded-lg overflow-hidden w-[80%] m-auto md:overflow-x-auto">
         <table className="min-w-full leading-normal">
           <thead>
             <tr>
@@ -61,7 +60,7 @@ const TaskList: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredTasks.map((task) => (
+            {filteredTasks.map((task) => ( // Changed to tasks.map
               <tr key={task.id} className={task.completed ? 'bg-green-50' : ''}>
                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                   <input
@@ -79,15 +78,15 @@ const TaskList: React.FC = () => {
                 </td>
                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                   <span
-                    className={`relative inline-block px-3 py-1 font-semibold leading-tight ${
+                    className={` inline-block px-3 py-1 font-semibold leading-tight ${
                       task.priority === "HIGH"
                         ? 'text-red-900 bg-red-200'
                         : task.priority === "MEDIUM"
                           ? 'text-yellow-900 bg-yellow-200'
                           : 'text-green-900 bg-green-200'
-                    } opacity-50 rounded-full`}
+                    }  rounded-full`}
                   >
-                    <span className="relative">{task.priority}</span>
+                    <span className="">{task.priority}</span>
                   </span>
                 </td>
                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -95,13 +94,13 @@ const TaskList: React.FC = () => {
                 </td>
                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                   <span
-                    className={`relative inline-block px-3 py-1 font-semibold leading-tight ${
+                    className={` inline-block px-3 py-2 font-extrabold ${
                       task.completed
-                        ? 'text-green-900 bg-green-200'
+                        ? 'text-[#2b8a3e] bg-[#b2f2bb]'
                         : 'text-red-900 bg-red-200'
-                    } opacity-50 rounded-full`}
+                    }  rounded-full`}
                   >
-                    <span className="relative">{task.completed ? 'Completed' : 'Pending'}</span>
+                    <span className="">{task.completed ? 'COMPLETED' : 'PENDING'}</span>
                   </span>
                 </td>
                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm text-right">

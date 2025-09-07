@@ -31,11 +31,12 @@ export const TasksProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     setTasks((prev) => [...prev, newTask]);
   };
 
-  // UPDATE
+  // UPDATE TASK
   const updateTask = (id: number, updatedTask: ITask) => {
     setTasks((prev) =>
       prev.map((task) => (task.id === id ? { ...task, ...updatedTask } : task))
     );
+    window.location.reload();
   };
 
 //   MARK TASK AS COMPLETED
@@ -45,11 +46,13 @@ export const TasksProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         task.id === id ? { ...task, completed: true } : task
       )
     );
+    window.location.reload();
   };
 
   // DELETE A TASK 
   const deleteTask = (id: number) => {
     setTasks((prev) => prev.filter((task) => task.id !== id));
+    window.location.reload();
   };
 
   return (

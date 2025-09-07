@@ -34,8 +34,6 @@ const AddTask: React.FC = () => {
     };
 
     addTask(newTask);
-    console.log("New Task Added:", newTask);
-
     setIsOpen(false);
     setTask({
       title: "",
@@ -44,10 +42,11 @@ const AddTask: React.FC = () => {
       createdAt: formatDate(new Date()),
       priority: "LOW",
     });
+    window.location.reload()
   };
 
   return (
-    <div className="p-4 w-[63%] m-auto mt-16">
+    <div className="p-4">
           <Button 
             label="+ Add Task"
             className="px-4 py-2 rounded border float-right "
