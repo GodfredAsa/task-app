@@ -3,7 +3,6 @@ import { TasksContextType } from "../types/TasksContextType";
 import { GenerateTaskId } from "../utils/TaskUtils";
 import { ITask } from "../types/ITask";
 
-
 export const TasksContext = createContext<TasksContextType | undefined>(undefined);
 
 // Provider component
