@@ -35,7 +35,6 @@ const AddTask: React.FC = () => {
     addTask(newTask);
     console.log("New Task Added:", newTask);
 
-    // reset state
     setIsOpen(false);
     setTask({
       title: "",
