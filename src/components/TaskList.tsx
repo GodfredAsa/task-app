@@ -21,9 +21,9 @@ const TaskList: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
+    <div className="min-h-screen bg-gray-100 p-8 border border-red-600 w-[80%] m-auto">
       <h1 className="text-2xl font-bold text-gray-800 mb-6">Tasks ({tasks.length})</h1>
-      <div className="bg-white shadow rounded-lg overflow-hidden w-[60%] m-auto">
+      <div className="bg-white shadow rounded-lg overflow-hidden w-[80%] m-auto">
         <table className="min-w-full leading-normal">
           <thead>
             <tr>
