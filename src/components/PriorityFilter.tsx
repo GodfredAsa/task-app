@@ -15,8 +15,7 @@ const filterItems = [
 
 const PriorityFilter: React.FC<PriorityFilterProps> = ({ onFilterChange, currentFilter }) => {
   return (
-    <div className="mb-4 flex justify-end">
-      <label htmlFor="priorityFilter" className="block text-gray-700 text-sm font-bold mr-2">Filter by Priority:</label>
+    <div className="mb-4 flex justify-end mt-4">
       <select
             id="priorityFilter"
             className="shadow border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
