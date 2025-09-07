@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ITask } from '../types/ITask';
 import { useTasks } from '../hooks/useTask';
+import Button from './Button';
 
 interface UpdateTaskProps {
   task: ITask;
@@ -77,20 +78,23 @@ const UpdateTask: React.FC<UpdateTaskProps> = ({ task, onClose }) => {
               required
             />
           </div>
-          <div className="flex items-center justify-between">
-            <button
+          <div className="flex items-center justify-end gap-2">
+
+          <Button 
+            label="Cancel"
+            className="px-4 py-2 rounded border"
+            bgColor="white"
+            textColor="black"
+            type="button"
+            onClick={onClose}
+            />
+            <Button 
+              label="Update"
+              className="px-4 py-2 rounded border"
+              bgColor="#000000"
+              textColor="white"
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            >
-              Update Task
-            </button>
-            <button
-              type="button"
-              onClick={onClose}
-              className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            >
-              Cancel
-            </button>
+            />
           </div>
         </form>
       </div>

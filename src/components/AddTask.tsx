@@ -3,6 +3,7 @@ import { GenerateTaskId } from "../utils/TaskUtils";
 import { ITask } from "../types/ITask";
 import { formatDate } from "../utils/GeneralUtils";
 import { useTasks } from "../hooks/useTask";
+import Button from "./Button";
 
 const AddTask: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,13 +47,15 @@ const AddTask: React.FC = () => {
   };
 
   return (
-    <div className="p-4">
-      {/* Button */}
-      <button
-        onClick={() => setIsOpen(true)}
-        className="px-4 py-2 bg-black text-white rounded-lg float-right mr-64 mt-12"
-      > + Add Task
-      </button>
+    <div className="p-4 w-[63%] m-auto mt-16">
+          <Button 
+            label="+ Add Task"
+            className="px-4 py-2 rounded border float-right "
+            bgColor="#000000"
+            textColor="white"
+            type="button"
+            onClick={() => setIsOpen(true)}
+            />
 
       {/* Modal */}
       {isOpen && (
@@ -96,19 +99,20 @@ const AddTask: React.FC = () => {
                 <option value="HIGH">High</option>
               </select>
               <div className="flex justify-end space-x-2">
-                <button
+              <Button 
+                  label="Cancel"
+                  className="px-4 py-2 rounded border"
+                  bgColor="white"
+                  textColor="black"
                   type="button"
                   onClick={() => setIsOpen(false)}
-                  className="px-4 py-2 border rounded"
-                >
-                  Cancel
-                </button>
-                <button
+              />
+              <Button 
+                  label="Create"
+                  className="px-4 py-2 bg-black text-white rounded"
+                  bgColor="#000000"
                   type="submit"
-                  className="px-4 py-2 bg-green-600 text-white rounded"
-                >
-                  Save
-                </button>
+              />
               </div>
             </form>
           </div>
