@@ -54,7 +54,7 @@ const AddTask: React.FC = () => {
             textColor="white"
             type="button"
             onClick={() => setIsOpen(true)}
-            />
+          />
 
       {/* Modal */}
       {isOpen && (
@@ -82,6 +82,8 @@ const AddTask: React.FC = () => {
               <input
                 type="date"
                 name="dueDate"
+                id="dueDate"
+                data-testid="dueDate"
                 value={task.dueDate}
                 onChange={handleChange}
                 className="w-full border p-2 rounded"

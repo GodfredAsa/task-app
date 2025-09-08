@@ -4,7 +4,7 @@ import AddTask from './components/AddTask';
 import TaskList from './components/TaskList';
 import { TasksProvider } from './context/TasksContext';
 import Card from './components/Card';
-import FolderIcon from './components/FolderIcon';
+import TaskIcon from './components/TaskIcon';
 import PriorityFilter from './components/PriorityFilter';
 import { ITask } from './types/ITask';
 import { useTasks } from './hooks/useTask';
@@ -29,17 +29,17 @@ function App() {
           <Card
             title="High Priority"
             value={highPriorityTasks}
-            icon={<FolderIcon />}
+            icon={<TaskIcon />}
           />
           <Card
             title="Completed Tasks"
             value={completedTasks}
-            icon={<FolderIcon />}
+            icon={<TaskIcon />}
           />
           <Card
             title="Pending Tasks"
             value={pendingTasks}
-            icon={<FolderIcon />}
+            icon={<TaskIcon />}
           />
         </div>
         <div className="w-[80%] m-auto flex justify-end items-center my-4 gap-2">
